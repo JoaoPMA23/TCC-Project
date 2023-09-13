@@ -26,11 +26,11 @@ class LoginActivity(
     fun login(v: View) {
         auth.signInWithEmailAndPassword(c1.text.toString(), c2.text.toString())
             .addOnCompleteListener { task ->
-                // Seu código a ser executado quando a tarefa estiver completa - Não foi o chatgpt q fez :)
+
                 if (task.isSuccessful) {
-                    Toast.makeText(applicationContext, "DEU BOM KRL", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Login realizado com sucesso", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(applicationContext, "BURRÃO FILHO", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Falha na autenticação", Toast.LENGTH_LONG).show()
 
 
                 }
