@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.teste">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,9 @@
         android:theme="@style/Theme.Teste"
         tools:targetApi="31">
         <activity
+            android:name=".InviteCodeActivity"
+            android:exported="false" />
+        <activity
             android:name=".NameActivity"
             android:exported="false" />
         <activity
@@ -25,6 +31,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -36,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
