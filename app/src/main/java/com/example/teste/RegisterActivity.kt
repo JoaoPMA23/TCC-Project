@@ -36,11 +36,7 @@ class RegisterActivity(
         dialog = ProgressDialog(this)
     }
 
-
-
-    public fun authEmail (view: View){
-
-
+    fun authEmail (view: View){
         auth.fetchSignInMethodsForEmail(cademail.text.toString()).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 dialog.dismiss()

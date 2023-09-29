@@ -14,6 +14,7 @@
         android:src="@drawable/defaultprofile"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:onClick="selectImage"
         android:layout_marginTop="2dp">
 
     </de.hdodenhof.circleimageview.CircleImageView>
@@ -40,6 +41,7 @@
         android:layout_marginStart="159dp"
         android:layout_marginTop="224dp"
         android:text="Proximo"
+        android:onClick="generateCode"
         />
 
 </RelativeLayout>

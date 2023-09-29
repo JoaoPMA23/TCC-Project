@@ -4,25 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="authEmail"
     tools:context=".RegisterActivity">
 
     <Button
         android:id="@+id/btnConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="180dp"
+        android:onClick="authEmail"
         android:text="Confirmar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnVoltar"
-        android:layout_width="107dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginBottom="156dp"
-        android:text="Voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -60,8 +52,8 @@
         android:hint="Insira sua senha"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="288dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="288dp" />
 
     <EditText
         android:id="@+id/txtTelefoneCadastro"

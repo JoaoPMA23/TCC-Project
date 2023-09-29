@@ -12,9 +12,10 @@ class LoginActivity(
     var auth: FirebaseAuth,
     var c1: EditText,
     var c2: EditText
+
 ) : AppCompatActivity() {
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -23,7 +24,7 @@ class LoginActivity(
         auth = FirebaseAuth.getInstance()
     }
 
-    fun login(v: View) {
+    fun makeLogin(view: android.view.View) {
         auth.signInWithEmailAndPassword(c1.text.toString(), c2.text.toString())
             .addOnCompleteListener { task ->
 

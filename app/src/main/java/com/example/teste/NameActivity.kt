@@ -1,18 +1,21 @@
 package com.example.teste
 
+import android.R.attr
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.core.view.View
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import kotlin.random.Random
+
 
 class NameActivity : AppCompatActivity() {
     lateinit var email: String
@@ -34,7 +37,7 @@ class NameActivity : AppCompatActivity() {
             val password = myIntent.getStringExtra("password")
         }
     }
-    public fun generateCode (v: View) {
+    public fun generateCode (v: android.view.View) {
 
         val MyDate = Date()
         val format1 = SimpleDateFormat("dd-MM-yyyy hh:mm:ss a", Locale.getDefault())
@@ -59,21 +62,37 @@ class NameActivity : AppCompatActivity() {
             Toast.makeText(getApplicationContext(), "Escolha uma imagem", Toast.LENGTH_SHORT).show();
         }
     }
-    public fun selectImage(v: View){
-        val intent1 = Intent()
-        intent1.action = Intent.ACTION_GET_CONTENT
-        intent1.type = "image/*"
-        ActivityResultContracts.StartActivityForResult()
-        //Se der erro é esta linha acima
-        onActivityResult()
 
-
+    fun selectImage(v: android.view.View) {
+        val i = Intent()
+        i.action = Intent.ACTION_GET_CONTENT
+        i.type = "image/*"
+        startActivityForResult(i,12)
     }
 
-    private fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        if (requestCode == 12 && resultCode == RESULT_OK && data!=null){
+//    private fun onActivityResult(
+//        requestCode: Int,
+//        resultCode: Int,
+//        data: Intent
+//    ) {
+//       if (requestCode == 12 && resultCode == RESULT_OK && data != null) {
+//           CropImage.activity()
+//               .setGuidelines(CropImageView.Guidelines.ON)
+//               .setAspectRatio(1,1)
+//               .start(this);
+//       }
+//
+//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+//            val result = CropImage.getActivityResult(data)
+//            if (resultCode == RESULT_OK) {
+//                result.uri
+//            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+//                result.error
+//            }
+//        }
+//    }
 
-        }
 
-    }
+
+
 }

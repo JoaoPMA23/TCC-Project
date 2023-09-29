@@ -18,6 +18,7 @@
         android:layout_marginStart="107dp"
         android:layout_marginTop="505dp"
         android:layout_marginBottom="178dp"
+        android:onClick="goToRegister"
         android:text="Crie sua conta" />
 
     <Button
@@ -29,6 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="109dp"
         android:layout_marginBottom="95dp"
+        android:onClick="goToLogin"
         android:text="Acesse sua conta" />
 
 </RelativeLayout>

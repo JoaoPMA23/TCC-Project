@@ -3,9 +3,9 @@ package com.example.teste
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.database.core.view.View
 
 class PasswordActivity(
     private var email: String,
