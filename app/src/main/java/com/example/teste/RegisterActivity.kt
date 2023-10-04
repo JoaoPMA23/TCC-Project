@@ -1,5 +1,6 @@
 package com.example.teste
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,16 +14,12 @@ import android.content.Intent
 
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterActivity(
-    var cademail: EditText,
-    var cadsenha: EditText,
-    var cadtel: EditText,
-    var check: Boolean = false,
-    private var auth: FirebaseAuth,
-    private var dialog: ProgressDialog
-
-
-) : AppCompatActivity() {
+@Suppress("DEPRECATION")
+class RegisterActivity() : AppCompatActivity() {
+    lateinit var cademail: EditText
+    var check: Boolean = false
+    lateinit var auth: FirebaseAuth
+    lateinit var dialog: ProgressDialog
     lateinit var progressbar: ProgressBar
 
 
@@ -30,33 +27,56 @@ class RegisterActivity(
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         cademail = findViewById<EditText>(R.id.txtEmailCadastro)
-        cadsenha = findViewById<EditText>(R.id.txtSenhaCadastro)
-        cadtel = findViewById<EditText>(R.id.txtTelefoneCadastro)
         auth = FirebaseAuth.getInstance()
         dialog = ProgressDialog(this)
     }
 
     fun authEmail (view: View){
-        auth.fetchSignInMethodsForEmail(cademail.text.toString()).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                dialog.dismiss()
-                val signInMethods = task.result?.signInMethods
-                val check = signInMethods?.isNotEmpty() ?: false
+        val email = cademail.text.toString().trim()
+        if(email.isNotEmpty()) {
+            auth.fetchSignInMethodsForEmail(cademail.text.toString())
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val signInMethods = task.result?.signInMethods
+                        val check = signInMethods?.isNotEmpty() ?: false
+                        if (!check) {
+                            dialog.setMessage("Carregando...")
+                            dialog.setCancelable(false)
+                            dialog.show()
+                            val myIntent =
+                                Intent(this@RegisterActivity, PasswordActivity::class.java)
+                            myIntent.putExtra("email", cademail.text.toString())
+                            startActivity(myIntent)
+                            // O email não está cadastrado
+                        } else {
+                            // O email já está cadastrado
+                            dialog.dismiss()
+                            Toast.makeText(
+                                applicationContext,
+                                "Email ja cadastrado",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
-                if (!check) {
-                    val myIntent = Intent(this@RegisterActivity, PasswordActivity::class.java)
-                    myIntent.putExtra("email", cademail.text.toString())
-                    startActivity(myIntent)
-                    // O email não está cadastrado
-                } else {
-                    // O email já está cadastrado
-                    dialog.dismiss()
-                    Toast.makeText(applicationContext, "BURRÃO JÁ ESTÁ CADASTRADO", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Insira um email valido",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-            } else {
-                // O código para lidar com falhas da tarefa vai aqui
-            }
+        }
+        else {
+            // O campo de e-mail está vazio, exiba uma mensagem de erro
+            Toast.makeText(
+                applicationContext,
+                "Preencha o campo de email",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
     }
+
 }
+

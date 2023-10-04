@@ -8,12 +8,10 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.core.view.View
 
-class LoginActivity(
-    var auth: FirebaseAuth,
-    var c1: EditText,
-    var c2: EditText
-
-) : AppCompatActivity() {
+class LoginActivity() : AppCompatActivity() {
+    lateinit var auth: FirebaseAuth
+    lateinit var c1: EditText
+    lateinit var c2: EditText
 
     @SuppressLint("MissingInflatedId", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
