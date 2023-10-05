@@ -6,4 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".InviteCodeActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:text="XXXXXX"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="48dp"
+        android:layout_toStartOf="@+id/textView2"
+        android:gravity="center_horizontal"
+        android:layout_alignParentEnd="true"
+        android:text="Salve este código e envie para seu contato se juntar ao seu circulo." />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="33dp"
+        android:text="Salvar" />
 </RelativeLayout>

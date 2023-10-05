@@ -1,6 +1,7 @@
 package com.example.teste
 
 import android.R.attr
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -23,7 +24,7 @@ class NameActivity : AppCompatActivity() {
     lateinit var nome: EditText
     lateinit var circleImageView: CircleImageView
 
-    val resultUri: Uri? = null
+    var resultUri: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_name)
@@ -69,6 +70,30 @@ class NameActivity : AppCompatActivity() {
         i.type = "image/*"
         startActivityForResult(i,12)
     }
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 12 && resultCode == Activity.RESULT_OK && data != null) {
+            CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setAspectRatio(1, 1)
+                .start(this)
+        }
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+           val result = CropImage.getActivityResult(data)
+            val resultUri = result.uri
+            circleImageView.setImageURI(resultUri)
+        } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+            val result = CropImage.getActivityResult(data)
+            val error = result.error
+        }
+    }
+
+
 
 //    private fun onActivityResult(
 //        requestCode: Int,
