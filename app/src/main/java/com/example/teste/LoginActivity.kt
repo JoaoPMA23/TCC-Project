@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.example.teste.R
+
 import com.google.firebase.database.core.view.View
 
 class LoginActivity() : AppCompatActivity() {
@@ -17,7 +19,7 @@ class LoginActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        c1 = findViewById<EditText>(androidx.core.R.id.edit_text_id)
+        c1 = findViewById<EditText>(androidx.core.R.id.txt)
         c2 = findViewById<EditText>(androidx.core.R.id.edit_text_id)
         auth = FirebaseAuth.getInstance()
     }

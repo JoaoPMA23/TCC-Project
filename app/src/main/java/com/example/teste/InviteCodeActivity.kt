@@ -8,6 +8,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -53,6 +55,19 @@ class InviteCodeActivity : AppCompatActivity() {
     fun registerUser(v: View) {
         progressDialog.setMessage("Aguarde, sua conta está sendo criada...")
         progressDialog.show()
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val createUser = CreateUser(name, email, password, code, "false", "na", "na", "na")
+                    val user = auth.currentUser
+                    val userId = user?.uid
+                } else {
+                    progressDialog.dismiss()
+                    Toast.makeText(this@InviteCodeActivity, "Erro ao criar conta: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+
+            }
     }
 }
 

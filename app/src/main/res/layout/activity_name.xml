@@ -42,6 +42,7 @@
         android:layout_marginTop="224dp"
         android:text="Proximo"
         android:onClick="generateCode"
+
         />
 
 </RelativeLayout>

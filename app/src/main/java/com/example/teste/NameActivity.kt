@@ -111,6 +111,7 @@ class NameActivity : AppCompatActivity() {
 //            val result = CropImage.getActivityResult(data)
 //            if (resultCode == RESULT_OK) {
 //                result.uri
+//                circleImageView.setImageURI(resultUri)
 //            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
 //                result.error
 //            }

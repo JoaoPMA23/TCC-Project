@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/txtEmail"
+        android:id="@+id/TxtEmail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
@@ -18,7 +18,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/txtSenha"
+        android:id="@+id/TxtSenha"
         android:layout_width="410dp"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
